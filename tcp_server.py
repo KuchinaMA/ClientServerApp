@@ -1,11 +1,11 @@
 import socket
 from protocol import send_msg, recv_msg
 
-def tcp_server(port):
+def tcp_server(host, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind(('', port))
+        s.bind((host, port))
         s.listen(1)
-        print(f"[TCP SERVER] Listening on port {port}...")
+        print(f"[TCP SERVER] Listening on {host}:{port}...")
         while True:
             conn, addr = s.accept()
             with conn:
